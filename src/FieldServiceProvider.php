@@ -16,11 +16,11 @@ class FieldServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::mix('hugerte-editor', __DIR__.'/../dist/mix-manifest.json');
+            Nova::mix('nova-hugerte', __DIR__.'/../dist/mix-manifest.json');
         });
 
         $this->publishes([
-            __DIR__.'/../config/nova-hugerte-editor.php' => config_path('nova-hugerte-editor.php'),
+            __DIR__.'/../config/nova-hugerte.php' => config_path('nova-hugerte.php'),
         ], 'config');
     }
 

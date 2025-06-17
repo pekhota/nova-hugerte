@@ -1,10 +1,16 @@
 {
     "name": "pekhota/nova-hugerte",
-    "description": "A Laravel Nova field.",
+    "description": "Nova HugeRTE – a self-hosted TinyMCE-compatible editor field",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "editor",
+        "tinymce",
+        "hugerte"
     ],
+    "suggest": {
+        "laravel/nova": "Required to use this field"
+    },
     "license": "MIT",
     "require": {
         "php": "^8.1",

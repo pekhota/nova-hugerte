@@ -28,7 +28,7 @@ Then publish the config:
 php artisan vendor:publish --provider="Pekhota\NovaHugeRTE\FieldServiceProvider"
 ```
 
-A file in config/nova-hugerte-editor.php will appear as follows (you can change the default values):
+A file in config/nova-hugerte.php will appear as follows (you can change the default values):
 
 ```php
 <?php

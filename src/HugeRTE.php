@@ -16,7 +16,7 @@ class HugeRTE extends Field
      *
      * @var string
      */
-    public $component = 'hugerte-editor';
+    public $component = 'nova-hugerte';
 
     /**
      * Indicates if the element should be shown on the index view.
@@ -31,7 +31,7 @@ class HugeRTE extends Field
         $this->resolveCallback = $resolveCallback;
 
         $this->withMeta([
-            'options' => config('nova-hugerte-editor', []),
+            'options' => config('nova-hugerte', []),
         ]);
     }
 

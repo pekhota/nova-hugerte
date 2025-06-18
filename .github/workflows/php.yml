@@ -29,11 +29,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Login to Laravel Nova
+      run: composer config http-basic.nova.laravel.com ${NOVA_USERNAME} ${NOVA_PASSWORD}
+      env:
+        NOVA_USERNAME: ${{ secrets.NOVA_USERNAME }}
+        NOVA_PASSWORD: ${{ secrets.NOVA_PASSWORD }}
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test

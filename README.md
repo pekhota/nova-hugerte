@@ -1,13 +1,18 @@
 # Nova HugeRTE Editor
 
+![Hero](./art/featured.png)
+
 ## Introduction
 
 Based on [murdercode/Nova4-TinymceEditor](https://github.com/murdercode/Nova4-TinymceEditor) HugeRTE license free 
 alternative editor for your Laravel Nova App.
 
+## Screenshots
+
+![Screenshot](./art/screenshot.png)
+
 ## Features 
 - Dark mode support
-- Switch between 5 or 6 versions of TinyMCE
 - Can be disabled (by passing readonly() to make method)
 
 ## Prerequisites

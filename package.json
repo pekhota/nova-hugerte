@@ -9,6 +9,9 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "^9.29.0",
+        "globals": "^16.2.0",
         "laravel-nova-devtool": "file:vendor/laravel/nova-devtool",
         "lodash": "^4.17.21"
     },

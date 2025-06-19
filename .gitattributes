@@ -1,0 +1,6 @@
+# Do not include docs or screenshots in composer installs
+/docs/**          export-ignore
+/art/**           export-ignore
+
+# Ignore GitHub workflow assets
+.github/**        export-ignore

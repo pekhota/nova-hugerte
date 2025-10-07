@@ -7,6 +7,11 @@ return [
     'skin' => 'oxide-dark',
 
     /**
+     * Enable lazy-loading globally.
+     */
+    'lazy' => false,           // true = render <textarea> first, mount editor on interaction
+
+    /**
      * The default options to send to the editor.
      * See https://github.com/hugerte/hugerte and https://www.tiny.cloud/docs/configure/ for all available options.
      */

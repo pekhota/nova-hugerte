@@ -4,49 +4,62 @@
 
 ## Introduction
 
-Based on [murdercode/Nova4-TinymceEditor](https://github.com/murdercode/Nova4-TinymceEditor) HugeRTE license free 
-alternative editor for your Laravel Nova App.
+Based on [murdercode/Nova4-TinymceEditor](https://github.com/murdercode/Nova4-TinymceEditor), 
+**HugeRTE** is a license-free rich text editor field for Laravel Nova.
 
 ## Screenshots
 
+### Active Editor
+Once activated, the full TinyMCE-based HugeRTE editor mounts in place.  
 ![Screenshot](./art/screenshot.png)
 
-## Features 
-- Dark mode support
-- Can be disabled (by passing readonly() to make method)
+### Lazy Mode
+Editor loads only when clicked, improving performance on forms with many editors.  
+![Screenshot](./art/screenshot-lazy.png)
+
+## Features
+- **Lazy loading support** (configurable) → improves performance by mounting editors only on demand.
+- Click-to-enable overlay with smooth transition.
+- Dark mode support (auto or manual).
+- Configurable TinyMCE `init`, `plugins`, and `toolbar` options.
+- Can be disabled via `readonly()`.
 
 ## Prerequisites
 - Laravel >= 9
 - PHP >= 8.0
 - Laravel Nova >= 5
 
-## How to install
+## Installation
 
-In the root of your Laravel installation launch:
-
-```shell
 composer require pekhota/nova-hugerte
-```
 
 Then publish the config:
-```shell
-php artisan vendor:publish --provider="Pekhota\NovaHugeRTE\FieldServiceProvider"
-```
 
-A file in config/nova-hugerte.php will appear as follows (you can change the default values):
+php artisan vendor:publish --provider="Pekhota\NovaHugeRTE\FieldServiceProvider"
+
+This will create `config/nova-hugerte.php`:
 
 ```php
 <?php
 
 return [
     /**
-     * The default skin to use.
+     * Default skin to use.
      */
     'skin' => 'oxide-dark',
 
     /**
+     * Whether to enable lazy mode by default.
+     * Lazy mode shows a textarea with overlay until activated,
+     * reducing initial page load when multiple editors are present.
+     */
+    'lazy' => false,
+
+    /**
+     * HugeRTE init options.
      * The default options to send to the editor.
-     * See https://github.com/hugerte/hugerte and https://www.tiny.cloud/docs/configure/ for all available options.
+     * See https://github.com/hugerte/hugerte and https://www.tiny.cloud/docs/configure/ 
+     * for all available options.
      */
     'init' => [
         'menubar' => false,
@@ -76,15 +89,16 @@ return [
     ],
     'toolbar' => [
         'undo redo restoredraft | h2 h3 h4 |
-                 bold italic underline strikethrough blockquote removeformat |
-                 align bullist numlist outdent indent | image link anchor table | code fullscreen spoiler',
+         bold italic underline strikethrough blockquote removeformat |
+         align bullist numlist outdent indent | image link anchor table |
+         code fullscreen spoiler',
     ],
 ];
 ```
 
-## Register the Field
+## Usage
 
-In your Nova/Resource.php add the field as following:
+In your `Nova/Resource.php` add the field:
 
 ```php
 <?php
@@ -93,7 +107,6 @@ use Pekhota\NovaHugeRTE\HugeRTE;
 
 class Article extends Resource
 {
-    //...
     public function fields(NovaRequest $request)
     {
         return [
@@ -104,8 +117,20 @@ class Article extends Resource
         ];
     }
 }
-
 ```
 
+## Lazy vs Eager Mode
 
+- **Eager mode (default):** Always mount the editor immediately:
+- **Lazy mode:** Shows a textarea with overlay until clicked. Best for performance with many fields. To enable, 
+set in config
 
+```php
+'lazy' => true,
+```
+
+or per field
+
+```php
+HugeRTE::make('Content')->withMeta(['options' => ['lazy' => true]]);
+```

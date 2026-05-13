@@ -16,13 +16,30 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
-## [0.1.0] – 2025-06-16
-### Added
-- Initial public release of Nova HugeRTE.
-    - Laravel Nova field wrapping HugeRTE (TinyMCE-compatible) with dark-mode support, autosave, word-count and media embeds.
-    - Config-driven skin, plugins and toolbar.
-    - Includes Expandable and Dependent field traits for Nova resources.
+## [1.2.0] – 2026-04-02
+
+### Changed
+
+- Added Laravel 13 support (updated `illuminate/support` constraint to include `^13.0`).
 
 ---
 
-*This is the first version; earlier history does not exist.*
+## [1.1.0] – 2025-10-07
+
+### Added
+
+- Lazy load option: the HugeRTE editor can now be deferred until the field is visible, reducing initial page load cost.
+- `lazyLoad` config key in `config/nova-hugerte.php` to enable lazy loading globally.
+
+---
+
+## [1.0.0] – 2025-06-17
+
+### Added
+
+- Initial public release of Nova HugeRTE.
+- `HugeRTE` Nova field wrapping the HugeRTE (TinyMCE-compatible) editor with dark-mode support, autosave, word-count, and media embeds.
+- Config-driven skin, plugins, and toolbar via `config/nova-hugerte.php`.
+- `Expandable` and `Dependent` field traits for Nova resources.
+- Pre-built `dist/` assets — no separate build step required when installing.
+- GitHub Actions CI pipeline for PHP linting and testing.

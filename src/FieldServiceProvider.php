@@ -2,6 +2,7 @@
 
 namespace Pekhota\NovaHugeRTE;
 
+use Composer\InstalledVersions;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
@@ -16,7 +17,11 @@ class FieldServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::mix('nova-hugerte', __DIR__.'/../dist/mix-manifest.json');
+//            $ver = InstalledVersions::getPrettyVersion('pekhota/nova-hugerte') ?? time();
+            $ver = filemtime(__DIR__.'/../dist/js/field.js') ?: time();
+
+            Nova::script('nova-hugerte', __DIR__."/../dist/js/tool.js?v={$ver}");
+            Nova::style('nova-hugerte', __DIR__."/../dist/css/tool.css?v={$ver}");
         });
 
         $this->publishes([
